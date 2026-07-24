@@ -1,0 +1,192 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+#define('ENVIRONMENT', 'development');
+#error_reporting(E_ALL);
+/*
+| -------------------------------------------------------------------------
+| URI ROUTING
+| -------------------------------------------------------------------------
+| This file lets you re-map URI requests to specific controller functions.
+|
+| Typically there is a one-to-one relationship between a URL string
+| and its corresponding controller class/method. The segments in a
+| URL normally follow this pattern:
+|
+|	example.com/class/method/id/
+|
+| In some instances, however, you may want to remap this relationship
+| so that a different class/function is called than the one
+| corresponding to the URL.
+|
+| Please see the user guide for complete details:
+|
+|	https://codeigniter.com/user_guide/general/routing.html
+|
+| -------------------------------------------------------------------------
+| RESERVED ROUTES
+| -------------------------------------------------------------------------
+|
+| There are three reserved routes:
+|
+|	$route['default_controller'] = 'welcome';
+|
+| This route indicates which controller class should be loaded if the
+| URI contains no data. In the above example, the "welcome" class
+| would be loaded.
+|
+|	$route['404_override'] = 'errors/page_missing';
+|
+| This route will tell the Router which controller/method to use if those
+| provided in the URL cannot be matched to a valid route.
+|
+|	$route['translate_uri_dashes'] = FALSE;
+|
+| This is not exactly a route, but allows you to automatically route
+| controller and method names that contain dashes. '-' isn't a valid
+| class or method name character, so it requires translation.
+| When you set this option to TRUE, it will replace ALL dashes in the
+| controller and method URI segments.
+|
+| Examples:	my-controller/index	-> my_controller/index
+|		my-controller/my-method	-> my_controller/my_method
+*/
+$route['default_controller']     = 'home/blank';
+$route['feature']                  = 'home/controller_feature_magazine';
+$route['library']                  = 'home/controller_mylibrary';
+$route['qrcode']                  = 'home/controller_qrcode';
+$route['grewards']                 = 'home/controller_googlerewards';
+$route['batrewards']             = 'home/controller_batrewards';
+$route['cat']                     = 'home/controller_category';
+$route['cat/(:any)']             = 'home/controller_category/$1';
+$route['magz']                     = 'home/controller_allmagazine';
+#$route['magz/(:num)/(:any)'] 	= 'home/controller_magazine/$1/$2';
+$route['magz/(:any)']             = 'home/controller_magazine/$1';
+$route['magz/(:any)/(:any)']     = 'home/controller_magazine/$1/$2';
+$route['nama']                     = 'home/nama';
+$route['nama/(:any)']             = 'home/nama/$1';
+
+#register / login
+
+
+#backend custom for client
+$route['garuda-indonesia']         = 'login/custom/$1';
+
+$route['bca']                 = 'login/custom/$1';
+
+#$route['login'] = 'backend/controller_login';
+$route['login']                 = 'login';
+$route['register']                = 'login/signup';
+$route['logout']                  = 'backend/logout';
+
+#backend
+$route['backend']                  = 'backend';
+$route['backend/(:any)']          = 'backend/$1';
+$route['backend/panel/(:any)']     = 'backend/magz/$1';
+$route['ov']                     = 'backend/openView';
+$route['ov_std(:any)']                = 'backend/openView/$1';
+$route['ov_stdpanel/(:any)']         = 'backend/ov_magz/$1';
+#$route['backend/panel/(:any)/(:any)'] 			= 'backend/magz/$1/$2'; 
+#$route['backend/panel/(:any)/(:any)/setting'] 	= 'backend/magz/$1/$2/setting'; 
+
+#akun
+$route['account']                  = 'account_controller';
+$route['account/(:any)']         = 'account_controller/$1';
+
+#turner
+$route['P/(:any)']                 = 'ajaxrequest/pageturner/$1';
+
+
+
+#ajax request
+$route['xhr/issue/(:any)']                    = 'ajaxrequest/issue_data/$1';
+$route['xhr/issue_ov_std(:any)']               = 'ajaxrequest/issue_openview/$1';
+$route['xhr']                             = 'ajaxrequest';
+$route['xhr/(:any)']                     = 'ajaxrequest/$1';
+$route['xhr/(:any)/(:any)']             = 'ajaxrequest/$1/$2';
+$route['xhr/(:any)/(:any)/(:any)']         = 'ajaxrequest/$1/$2/$3';
+$route['xhr/api/(:any)']                 = 'ajaxrequest/api_magz/$2';
+$route['xhr/title/(:any)/(:any)']         = 'ajaxrequest/title/$1/$2';
+$route['xhr/convert_pdf/(:any)/(:any)'] = 'ajaxrequest/convert_pdf/$1/$2';
+
+#BCA API
+$route['api/bca/(:any)']                 = 'ajax_api/$1';
+
+#ajax post
+
+// $route['query'] 					     = 'query';
+
+$route['ajax']                               = 'ajaxpost';
+$route['ajax/(:any)']                      = 'ajaxpost/$1';
+$route['ajax/(:any)/(:any)']              = 'ajaxpost/$1/$2';
+$route['ajax/(:any)/(:any)/(:any)']      = 'ajaxpost/$1/$2/$3';
+$route['ajax/dele/(:any)/(:any)/(:any)'] = 'ajaxpost/crud/$1/$2/$3';
+$route['ajax/record/(:any)/(:any)']      = 'ajaxpost/record/$1/$2';
+
+#ajax post
+
+$route['ovj']                               = 'viewopen';
+$route['ovjapi/(:any)']                      = 'viewopen/$1';
+$route['ovjapi/(:any)/(:any)']             = 'viewopen/$1/$2';
+$route['ovj/(:any)']                      = 'viewopen/index/$1';
+$route['ovj/(:any)/(:any)']              = 'viewopen/index/$1/$2';
+$route['ovj/(:any)/(:any)/(:any)']          = 'viewopen/index/$1/$2/$3';
+
+$route['openvi']                         = 'openVi/collect/';
+$route['openvi/(:any)']                     = 'openVi/collect/$1/';
+$route['openvi/(:any)/(:any)']             = 'openVi/collect/$1/$2';
+$route['openvi/(:any)/(:any)/(:any)']    = 'openVi/collect/$1/$2/$3';
+$route['openvi/(:any)/(:any)/(:any)/(:any)']      = 'openVi/collect/$1/$2/$3/$4';
+
+$route['ovi/view']                         = 'openVi/open_view';
+$route['ovi/view/(:any)']                 = 'openVi/open_view/$1';
+$route['ovi/view/(:any)/(:any)']                 = 'openVi/open_view/$1/$2';
+
+// $route['sintak/(:any)'] 				 = 'query/sintak/$1';
+$route['query/(:any)']                       = 'query/sintak/$1';
+
+
+$route['openvi/unic']                      = 'openVi/unic';
+$route['like/(:any)/(:any)/(:any)']         = 'openVi/like/$1/$2/$3';
+$route['like/(:any)/(:any)/(:any)/(:any)'] = 'openVi/like/$1/$2/$3/$4';
+$route['like/(:any)']                     = 'openVi/like/$1';
+$route['getlike/(:any)']                 = 'openVi/getlike/$1';
+$route['getlike']                          = 'openVi/getlike';
+$route['bookmark/(:any)/(:any)/(:any)']     = 'openVi/bookmark/$1/$2/$3';
+$route['bookmark/(:any)/(:any)/(:any)/(:any)']         = 'openVi/bookmark/$1/$2/$3/$4';
+$route['bookmark/(:any)']                 = 'openVi/bookmark/$1';
+$route['getbookmark/(:any)']             = 'openVi/getbookmark/$1';
+$route['getbookmark']                     = 'openVi/getbookmark';
+
+
+$route['ovjs/(:any)']                              = 'viewopenstat/index/$1';
+$route['ovjs/(:any)/(:any)']                      = 'viewopenstat/index/$1/$2';
+$route['ovjs/(:any)/(:any)/(:any)']              = 'viewopenstat/index/$1/$2/$3';
+$route['ovjs/(:any)/(:any)/(:any)/(:any)']          = 'viewopenstat/index/$1/$2/$3/$4';
+
+$route['ov_std/(:any)']                              = 'viewopenstat/index/$1';
+$route['ov_std/(:any)/(:any)']                      = 'viewopenstat/index/$1/$2';
+$route['ov_std/(:any)/(:any)/(:any)']              = 'viewopenstat/index/$1/$2/$3';
+$route['ov_std/(:any)/(:any)/(:any)/(:any)']     = 'viewopenstat/index/$1/$2/$3/$4';
+
+$route['ov_cmn/(:any)']                              = 'viewopenstat/index/$1';
+$route['ov_cmn/(:any)/(:any)']                      = 'viewopenstat/index/$1/$2';
+$route['ov_cmn/(:any)/(:any)/(:any)']              = 'viewopenstat/index/$1/$2/$3';
+$route['ov_cmn/(:any)/(:any)/(:any)/(:any)']     = 'viewopenstat/index/$1/$2/$3/$4';
+
+#openview
+$route['ovapi/(:any)']                      = 'viewopen/api/$1';
+
+$route['oviAPI/(:any)']                      = 'viewopen/kebakar/$1';
+$route['oviAPI/(:any)/(:any)']              = 'viewopen/kebakar/$1/$2';
+$route['oviAPI/(:any)/(:any)/(:any)']     = 'viewopen/kebakar/$1/$2/$3';
+
+#test page
+$route['test']                     = 'test';
+$route['test2']                 = 'test/tes2';
+
+#mobile app
+$route['magazine/(:any)']     = 'mobile/magazine/$1';
+$route['magazine/(:any)/(:any)']     = 'mobile/magazine/$1/$2';
+
+#$route['404_override'] = 'Errorpage404';
+$route['translate_uri_dashes'] = FALSE;

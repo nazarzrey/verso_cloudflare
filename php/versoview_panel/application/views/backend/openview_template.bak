@@ -1,0 +1,88 @@
+<?php
+  if(empty($hdr_page)){
+    if(isset($hdr_openview)){
+      #var_dump($hdr_openview);
+      echo "<h3>".$hdr_openview[0]->magz_name."</h3>";
+      echo "<h4>".$hdr_openview[0]->issue_title."</h4>";
+      foreach ($hdr_openview as $key => $value) {
+        $imgpage = ganjil_genap($value->magz_page);
+        $path    = $value->issue_path;
+        #var_dump($path);
+        $url1    = base_url("ovj/".$hdr_id."/".$value->content."#");
+        #echo "<a href='".$url1."' class='brd' style='overflow:auto'>";
+        echo "<div class='content-page fisrt-content-page' data-url='".$url1."'>";
+         echo "<div class='img row'>";
+          echo "<div class='img-data'>";
+          foreach ($imgpage as $key => $page) {
+            $url = base_url("ovj/".$hdr_id."/".min_space($value->content,"-")."#p".$page);
+            $img = base_url(ov_img($page,$path));
+            echo "<a href='".$url."'><img src='".$img."' id='p".$page."' class='image'/></a>";
+          }
+          echo "</div>";
+          echo "</div>";
+          echo "
+            <h1 style='padding:40px 0;margin:0'>".$value->content."</h1>
+            <h2 style='padding:40px 0;margin:0'>".$value->title."</h2>
+            <h3>".$value->lead."</h3>
+            ";
+        echo "</div>";
+        #echo "</a>";
+      }
+    };
+  }else{
+    if(isset($dtl_openview)){
+      echo "<div class='view-page'></div>";
+      #var_dump($dtl_openview);
+    #echo "x";
+      #var_dump($hdr_openview);
+      echo "<h3>".$dtl_openview[0]->magz_name."</h3>";
+      echo "<h4>".$dtl_openview[0]->issue_title." / ".ucwords(min_space($hdr_page,""))."</h4>";
+      foreach ($dtl_openview as $key => $value) {
+        $imgpage = ganjil_genap($value->magz_page);
+        $path    = $value->issue_path;
+        $url1    = base_url("ovj/".$hdr_id."/".$value->magz_page);
+        echo "<div class='content-page fisrt-content-page' data-url='".$url1."'>";
+          if($value->magz_page % 2 == 0){ 
+          echo "<div class='img row'>";
+          echo "<div class='img-data'>";          
+            foreach ($imgpage as $key => $page) {
+              $url = base_url("ovj/".$hdr_id."/".$page);
+              $img = base_url(ov_img($page,$path));
+              echo "<img src='".$img."' id='p".$page."' class='image'/>";
+            } 
+            echo "</div>";
+            echo "</div>";
+          }
+          if(!empty($value->title)){
+            #echo $value->title."xxx";
+            echo "
+              <h1 style='padding:40px 0;margin:0'>".$value->content."</h1>
+              <h2 style='padding:40px 0;margin:0'>".$value->title."</h2>
+              <h3>".$value->lead."</h3>
+              ";              
+              if(!empty($value->body_text) && !empty($value->caption)){
+                echo "<p style='padding:10px 5px ;margin:0'>".$value->body_text."</p>";
+                echo "<label>".$value->caption."</label>";
+              }elseif(!empty($value->body_text) && empty($value->caption)){                
+                echo "<p style='padding:10px 5px ;margin:0'>".$value->body_text."</p>";
+              }elseif(empty($value->body_text) && !empty($value->caption)){
+                echo "<label>".$value->caption."</label>";
+              }
+            }else{
+              if(!empty($value->body_text) && !empty($value->caption)){
+                echo "<p style='padding:10px 5px ;margin:0'>".$value->body_text."</p>";
+                echo "<label>".$value->caption."</label>";
+              }elseif(!empty($value->body_text) && empty($value->caption)){                
+                echo "<p style='padding:10px 5px ;margin:0'>".$value->body_text."</p>";
+              }elseif(empty($value->body_text) && !empty($value->caption)){
+                echo "<label>".$value->caption."</label>";
+              }
+            }
+        echo "</div>";
+        #echo "</a>";
+      }
+    }else{
+      redirect('ovj/'.$hdr_id, 'location', 301);
+    }
+  }
+?>

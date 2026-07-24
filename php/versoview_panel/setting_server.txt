@@ -1,0 +1,5 @@
+CURL 
+IMAGICK
+php 7.1
+maria DB
+maxupload file

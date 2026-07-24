@@ -1,0 +1,109 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Home extends CI_Controller {
+	function __construct() {
+		parent::__construct();
+		// if ($this->session->userdata('username')) {
+		//   redirect(base_url('site'));
+		// }
+		// $this->load->model(array('Mod_data',
+		//                           'Mod_karyawan',
+		//                           'Mod_siswa',
+		//                           'Mod_proses'));
+		$this->load->model(array('Mod_query','Mod_magazine'));
+		#$this->load->helper('fungsi');
+	}
+
+	public function index(){     
+      	$data['datacategory'] = $this->Mod_query->getDataCategory();    
+      	$data['datacover'] = $this->Mod_query->getDataCover();  
+      	$this->template('home',$data);
+	}
+	public function blank($value='')
+	{
+		$this->load->view("home/blank_page");
+	}
+
+	#controller->router
+	public function controller_magazine($value='',$value1=''){
+		#h3($this->Mod_query->getDataMagazine($value)->magz_fk_issue);
+      	$data['datamagazine'] = $this->Mod_query->getDataMagazine($value);
+      	$data['issuemagazine'] = $this->Mod_query->issueMagazine($this->Mod_query->getDataMagazine($value)->magz_fk_issue);
+      	$data['lastmagazine'] = $this->Mod_query->showDataMagazine($value);
+      	$data['submagazine']  = $this->Mod_query->subMagazine($value,$value1);
+
+     	#echo h3($this->Mod_query->getDataMagazine($value)["magz_fk_issue"]."xx");
+		$this->template('home/open_magazine',$data);
+      	#echo h3($this->Mod_query->getDataMagazine($value)->magz_fk_issue);
+		
+	}
+	public function controller_category($value=''){
+		if(!empty($value)){
+			$data["listcategory"] = $this->Mod_query->listCategory($value);
+			$this->template('home/page_category',$data);
+		}else{
+			$this->header();
+			echo "gg";
+			$this->footer();
+		}
+		//$this->template("<div style='margin:100px'>magazine detail page $datax</div>");
+	}
+	// public function controller_allmagazine($value=''){  
+	// 	$this->template("<div style='margin:100px'>all magazine</div>","txt");
+	// }
+	// public function nama($value='',$value1='')
+	// {
+	// 	echo "nama ".$value." ".$value1;
+	// }
+	// public function controller_feature_magazine()
+	// {
+	// 	$this->template('home/open_magazine');
+	// }
+
+	#template
+	public function header()
+	{
+      	$data['listcategory'] = $this->Mod_query->getCategory();   
+		$this->load->view("templates/header",$data);
+	}
+	public function footer()
+	{
+		$this->load->view("templates/footer");
+	}
+	
+	public function template($view,$data)
+	{
+		$this->header();
+		if(is_array($data)){
+			$this->load->view($view,$data);
+		}else{
+			echo $view;
+		}
+		$this->footer();
+	}
+	#error page
+	// public function errorpage()
+	// {
+	// 	$this->template($this->load->view('errorpage'));
+	// }
+
+	#404
+
+	// public function controller_mylibrary($value='')
+	// {
+	// 	echo "mylibrary page";
+	// }
+	// public function controller_qrcode($value='')
+	// {
+	// 	echo "qrcode page";
+	// }
+	// public function controller_googlerewards($value='')
+	// {		
+	// 	echo "google rewards page";
+	// }
+	// public function controller_batrewards($value='')
+	// {
+	// 	echo "bat rewards page";
+	// }
+}

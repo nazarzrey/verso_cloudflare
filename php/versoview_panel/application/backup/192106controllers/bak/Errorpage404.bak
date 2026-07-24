@@ -1,0 +1,24 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Errorpage404 extends CI_Controller {
+
+	function __construct() {
+		parent::__construct();
+    	$this->load->library('session');
+    	$this->load->model(array('User_activity'));
+	}
+	public function index()
+	{
+		$data['session'] = $this->User_activity->activity();
+		$this->load->view("templates/backend_header",$data);
+		$this->load->view("templates/backend_menu_sidebar",$data);
+		$this->load->view("templates/backend_menu_top",$data);			
+		$this->load->view("errorpage");		
+		$this->load->view("templates/backend_footer",$data);
+	}
+
+}
+
+/* End of file Errorpage404.php */
+/* Location: ./application/controllers/Errorpage404.php */

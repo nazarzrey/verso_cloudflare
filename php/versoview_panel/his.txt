@@ -1,0 +1,1000 @@
+ 1017  pm2 start fe
+ 1018  pm2 delete fe
+ 1019  pm2 status
+ 1020  cd fe
+ 1021  pm2 start --name "fe" npm -- start
+ 1022  git pull origin master
+ 1023  git status
+ 1024  git fetch --all
+ 1025  git reset --hard
+ 1026  ls
+ 1027  fit status
+ 1028  pm2 restart fe
+ 1029  git pull origin master
+ 1030  pm2 restart fe
+ 1031  pm2 save
+ 1032  pm2 restart fe
+ 1033  git pull origin master
+ 1034  back.sh
+ 1035  cd /var/www/colours
+ 1036  cd /var/www
+ 1037  ls
+ 1038  cd analitics
+ 1039  ls
+ 1040  cd fe
+ 1041  git pull origin master
+ 1042  yarn
+ 1043  pm2 restart fe
+ 1044  cd /etc/nginx
+ 1045  ls
+ 1046  cd sites-available/
+ 1047  ls
+ 1048  cd ..
+ 1049  cd /var/www
+ 1050  ls
+ 1051  cd analitic
+ 1052  ls
+ 1053  nodemon
+ 1054  ls
+ 1055  cd ..
+ 1056  ls
+ 1057  cd backend
+ 1058  ls
+ 1059  nodemon
+ 1060  pm2 start server
+ 1061  git pull origin master
+ 1062  ls
+ 1063  cd /
+ 1064  cd var/www/
+ 1065  ls
+ 1066  mkdir newvv
+ 1067  sudo mkdir newvv
+ 1068  ls
+ 1069  sudo chmod -R 777 newvv
+ 1070  ls
+ 1071  cd newvv/
+ 1072  curl -O http://159.65.85.5/newvv.zip
+ 1073  unzip newvv.zip 
+ 1074  ls
+ 1075  cat wp-config.php
+ 1076  clear
+ 1077  nano wp-config.php
+ 1078  cd ..
+ 1079  cd..
+ 1080  cd ..
+ 1081  ls
+ 1082  cd ..
+ 1083  cd etc
+ 1084  cd bun
+ 1085  cd bin
+ 1086  ls
+ 1087  cd ..
+ 1088  ls
+ 1089  cd home
+ 1090  ls
+ 1091  cd nazarapp
+ 1092  ls
+ 1093  cd bin
+ 1094  ls
+ 1095  nano back.sh
+ 1096  clear
+ 1097  sudo msyqldump
+ 1098  mysqldump
+ 1099  cd 
+ 1100  cd /
+ 1101  cd var/www/html/
+ 1102  cd/
+ 1103  cd /
+ 1104  cd etc
+ 1105  cd nginx/
+ 1106  ls
+ 1107  cd sites-available/
+ 1108  ls
+ 1109  cd..
+ 1110  cd ..
+ 1111  ls
+ 1112  nano nginx.conf
+ 1113  ls -l
+ 1114  history
+ 1115  cd/
+ 1116  cd  /
+ 1117  cd var/www/html
+ 1118  cat history >s.txt
+ 1119  history >his.txt
+ 1120  pm2
+ 1121  fit
+ 1122  cd /
+ 1123  cd etc/nginx/
+ 1124  cd sites-
+ 1125  cd sites-available/
+ 1126  ls
+ 1127  cp panel.versoview.com new.versoview.com
+ 1128  sudo cp panel.versoview.com new.versoview.com
+ 1129  sudo nano new.versoview.com 
+ 1130  sudo system nginx restart
+ 1131  cd ..
+ 1132  sudo system restart nginx
+ 1133  sudo systemctl restart nginx
+ 1134  cd sites-enabled/
+ 1135  ls
+ 1136  cd..
+ 1137  cd ..
+ 1138  sudo ln -s sites-available/new.versoview.com  sites-enabled/new.versoview.com 
+ 1139  cd sites-enabled/
+ 1140  ls
+ 1141  sudo systemctl restart nginx
+ 1142  ls
+ 1143  cd ..
+ 1144  cd sites-available/
+ 1145  ls
+ 1146  nano default
+ 1147  sudo nano new.versoview.com 
+ 1148  cd ..
+ 1149  cd sites-enabled/
+ 1150  ls -l
+ 1151  cd etc/ngi
+ 1152  cd etc
+ 1153  cd /
+ 1154  cd etc
+ 1155  cd nginx/
+ 1156  sudo ln -s /etc/nginx/sites-available/new.versoview.com /etc/nginx/sites-enabled/
+ 1157  sudo rm /etc/nginx/sites-enabled/new.versoview.com
+ 1158  ls
+ 1159  sudo ln -s /etc/nginx/sites-available/new.versoview.com /etc/nginx/sites-enabled/
+ 1160  cd sites-enabled/
+ 1161  ls
+ 1162  cd ..
+ 1163  sudo systemctl reload nginx
+ 1164  sudo systemctl restart nginx
+ 1165  clear
+ 1166  ls
+ 1167  cd /
+ 1168  cd var/www/newvv/
+ 1169  ls
+ 1170  cd db
+ 1171  ld
+ 1172  ls
+ 1173  unzip versonew210615.zip 
+ 1174  ls
+ 1175  mysql -u root -p2r3yAppV13WL0k new_Vv < versonew210615.sql
+ 1176  mysqldump -u root -p2r3yAppV13WL0k new_Vv < versonew210615.sql
+ 1177  clear
+ 1178  mysqldump -u root -p2r3yAppV13WL0k new_Vv < versonew210615.sql
+ 1179  mysql -u root -p2r3yAppV13WL0k new_Vv < versonew210615.sql
+ 1180  clear
+ 1181  ls
+ 1182  uznip data-dump.zip 
+ 1183  unzip data-dump.zip 
+ 1184  ls
+ 1185  mysql -u root -p2r3yAppV13WL0k new_Vv < data-dump.sql
+ 1186  cd..
+ 1187  cd ..
+ 1188  ls
+ 1189  cd ..
+ 1190  ls
+ 1191  chmod -R 777 newvv
+ 1192  sudo chmod -R 777 newvv
+ 1193  cd /etc
+ 1194  ls
+ 1195  nano vstpd.conf
+ 1196  sudo nano vsftpd.conf
+ 1197  sudo adduser verso_newvvsite
+ 1198  clear
+ 1199  usermod -d /var/www/newvv verso_newvvsite
+ 1200  sudo usermod -d /var/www/newvv verso_newvvsite
+ 1201  clear
+ 1202  cd var
+ 1203  cd /var
+ 1204  cd html
+ 1205  ls
+ 1206  cd www
+ 1207  ls
+ 1208  cd newvv
+ 1209  ls
+ 1210  cd ..
+ 1211  cd html
+ 1212  ls
+ 1213  cd ..
+ 1214  chmod -R 777 newvv/*
+ 1215  sudo chmod -R 777 newvv/*
+ 1216  clear
+ 1217  cd newvv/
+ 1218  ls
+ 1219  clear
+ 1220  sudo systemctl restart nginxsudo systemctl restart nginx
+ 1221  sudo systemctl restart nginx
+ 1222  clear
+ 1223  cd /
+ 1224  cd etc
+ 1225  cd php/
+ 1226  ls
+ 1227  cd 7.1
+ 1228  php -v
+ 1229  cd /
+ 1230  clear
+ 1231  php -v
+ 1232  cd etc
+ 1233  ls
+ 1234  cd php/
+ 1235  cd 7.1
+ 1236  ls
+ 1237  cd fpm/
+ 1238  ls
+ 1239  sudo nano php.ini
+ 1240  clear
+ 1241  sudo systemctl restart nginx
+ 1242  cd..
+ 1243  cd ..
+ 1244  cd 8.0/
+ 1245  cd fp
+ 1246  ls
+ 1247  cd ..
+ 1248  clear
+ 1249  php --version
+ 1250  php -v
+ 1251  cd /
+ 1252  cd var/www/newvv
+ 1253  sudo nano info.php
+ 1254  ls
+ 1255  ;s
+ 1256  ls
+ 1257  clear
+ 1258  service php7.1-fpm restart
+ 1259  danangapp
+ 1260  clear
+ 1261  service php7.1-fpm restart
+ 1262  sudo service php7.1-fpm restart
+ 1263  sudo systemctl restart nginx
+ 1264  clear
+ 1265  sudo systemctl restart nginx
+ 1266  cd etc
+ 1267  cd /etc/php
+ 1268  cd 7.1/
+ 1269  cd fpm
+ 1270  ls
+ 1271  sudo nano php.ini
+ 1272  clear
+ 1273  sudo systemctl restart nginx
+ 1274  sudo service php7.1-fpm restart
+ 1275  sudo systemctl restart nginx
+ 1276  cd /var/www/newvv/
+ 1277  ls
+ 1278  rm -rv old
+ 1279  rm -rv old/*
+ 1280  clear
+ 1281  ls
+ 1282  cd old
+ 1283  dir
+ 1284  ls
+ 1285  cd ..
+ 1286  rm old
+ 1287  rm -rf old
+ 1288  ls
+ 1289  cd ..
+ 1290  cd panel/pageturner/
+ 1291  ls
+ 1292  cd ..
+ 1293  cd backup/
+ 1294  ls
+ 1295  ls -l
+ 1296  ls *.zip
+ 1297  ls *.zip -l
+ 1298  cd ..
+ 1299  cd pageturner/
+ 1300  ls
+ 1301  cd ..
+ 1302  du -sh pageturner/*
+ 1303  cd pageturner/200122/
+ 1304  ls
+ 1305  rm anantara_terbaru.zip 
+ 1306  rm new_anantara.zip 
+ 1307  rm test-api.zip 
+ 1308  rm -rv rest
+ 1309  rm -rv rest/
+ 1310  rm -rf rest/
+ 1311  ls
+ 1312  rm -rf test/
+ 1313  ls
+ 1314  cd ..
+ 1315  cd..
+ 1316  cd ..
+ 1317  du -sh pageturner/*
+ 1318  cd pageturner/200728
+ 1319  ls
+ 1320  rm fr8fraoewd8.zip 
+ 1321  cd ..
+ 1322  df -kh
+ 1323  cdcd /dev/shm
+ 1324  cd /dev/shm
+ 1325  ls
+ 1326  dir
+ 1327  cd ..
+ 1328  ls
+ 1329  cd /
+ 1330  clear
+ 1331  df -kh
+ 1332  ls
+ 1333  clear
+ 1334  cd /var
+ 1335  cd www/
+ 1336  du -sh html/*
+ 1337  du -sh html/* grep|G
+ 1338  du -sh html/* | grep G
+ 1339  du -sh html/* | grep M
+ 1340  du -sh html/* | grep M sort -r -n -k7
+ 1341  du -sh html/* | grep M sort -b
+ 1342  du -sh html/* | grep M
+ 1343  cd html/wp-content/
+ 1344  ls
+ 1345  du -sh ../wp-content/* | grep M
+ 1346  du -sh ../wp-content/themes/* | grep M
+ 1347  rm themes/versodem.zip 
+ 1348  ls
+ 1349  clear
+ 1350  cd ..
+ 1351  cd wp-content/
+ 1352  ls
+ 1353  du -sh ../wp-content/themes/* | grep M
+ 1354  du -sh ../wp-content/* | grep M
+ 1355  du -sh ../wp-content/uploads/* | grep M
+ 1356  du -sh ../wp-content/uploads/2019* | grep M
+ 1357  du -sh ../wp-content/uploads/2019/* | grep M
+ 1358  du -sh ../wp-content/uploads/2019/11/* | grep M
+ 1359  clear
+ 1360  cd ..
+ 1361  du -sh ../wp-content/* | grep M
+ 1362  du -sh wp-content/* | grep M
+ 1363  du -sh wp-content/themes/* | grep M
+ 1364  du -sh wp-content/themes/versoview/* | grep M
+ 1365  clear
+ 1366  cd ..
+ 1367  cd html
+ 1368  du -sh ../html/pageturner/* | grep M
+ 1369  du -sh ../html/pageturner/gia/* | grep M
+ 1370  clear
+ 1371  rm -rf var/
+ 1372  rm -rf download/
+ 1373  zip -r vvold.zip *
+ 1374  zip -r vvold.zip 
+ 1375  zip -R vvold.zip *
+ 1376  s
+ 1377  ls
+ 1378  rm vvold.zip 
+ 1379  cd ..
+ 1380  zip -R vvold.zip html/
+ 1381  sudo zip -R vvold.zip html/
+ 1382  ls
+ 1383  ls -l
+ 1384  sudo zip -R vvold.zip html/*
+ 1385  sudo zip -r vvold.zip html/*
+ 1386  df -kh
+ 1387  cd html
+ 1388  ls
+ 1389  ls *.zip
+ 1390  zip -R vvold.zip *
+ 1391  ls
+ 1392  ls -l *.zip 
+ 1393  zip -r vvold.zip wp-includes/ wp-content/ wp-admin/
+ 1394  mv vvold.zip ../panel/backup/
+ 1395  ls
+ 1396  cd..
+ 1397  cd ..
+ 1398  cd panel/backup/
+ 1399  ls
+ 1400  sudo msyqldump -u root -pNazarApp verso_front >210615.sql
+ 1401  msyqldump -u root -pNazarApp verso_front >210615.sql
+ 1402  cd ..
+ 1403  msyqldump -u root -pNazarApp verso_front >210615.sql
+ 1404  sudo msyqldump -u root -pNazarApp verso_front >210615.sql
+ 1405  clear
+ 1406  sudo msyqldump -u root -p2r3yAppV13WL0k verso_front >backup/210615.sql
+ 1407  mysqldump
+ 1408  sudo mysqldump
+ 1409  cd /
+ 1410  cd home/
+ 1411  cd nazarapp/bin
+ 1412  sudo nano back.sh
+ 1413  clear
+ 1414  back.sh
+ 1415  cd ..
+ 1416  cd/
+ 1417  cd  /
+ 1418  cd ..
+ 1419  cd panel
+ 1420  cd backup/
+ 1421  ls *old*
+ 1422  sudo mysqldump -u 
+ 1423  sudo mysqldump -u root
+ 1424  sudo mysqldump -u root -p2r3yAppV13WL0k verso_front >vvold.sql
+ 1425  ls
+ 1426  ls *old*
+ 1427  ls -l  *old* 
+ 1428  zip -r vvsql.zip vvold.sql 
+ 1429  sudo mysqldump -u root -p2r3yAppV13WL0k new_Vv >vvold.sql
+ 1430  sudo mysqldump -u root -p2r3yAppV13WL0k verso_front >vvold.sql
+ 1431  ls
+ 1432  df -kh
+ 1433  clear
+ 1434  ls
+ 1435  cd /
+ 1436  cd var/www
+ 1437  ls
+ 1438  cd ..
+ 1439  Du
+ 1440  du
+ 1441  clear
+ 1442  du -sh www/
+ 1443  du -sh www/*
+ 1444  du -sh www/panel/*
+ 1445  clear
+ 1446  du -sh www/panel/*
+ 1447  cd ..
+ 1448  du -sh www/panel/*
+ 1449  cd var
+ 1450  du -sh www/*
+ 1451  du -sh www/panel*
+ 1452  du -sh www/panel/*
+ 1453  du -sh www/*
+ 1454  clear
+ 1455  ls
+ 1456  df -kh
+ 1457  du -sh www/html
+ 1458  du -sh www/html/
+ 1459  du -sh www/html/*
+ 1460  cd /etc/nginx/sites-available$
+ 1461  cd /etc/nginx/sites-available
+ 1462  ls
+ 1463  sudo nano versoview.com
+ 1464  cd /var/www
+ 1465  ls
+ 1466  cd newvv/
+ 1467  ls
+ 1468  history >his.txt
+ 1469  sudo msyqldump -u root -p2r3yAppV13WL0k new_Vv >210615.sql
+ 1470  sudo msyqldump -u root -p2r3yAppV13WL0k
+ 1471  sudo msyqldump -u root
+ 1472  sudo mysqldump
+ 1473  sudo mysqldump -u root -p2r3yAppV13WL0k new_Vv >newvv.sql
+ 1474  zip -r newvv.zip newvv.sql 
+ 1475  sudo mysqldump -u root -p2r3yAppV13WL0k verso_n3w<newvv.sql
+ 1476  unzip new_vv.zip
+ 1477  sudo mysqldump -u root -p2r3yAppV13WL0k verso_n3w<newvv.sql
+ 1478  sudo mysqldump -u root -p2r3yAppV13WL0k verso_n3w <newvv.sql
+ 1479  sudo mysqldump -u root -p2r3yAppV13WL0k verso_new <newvv.sql
+ 1480  clear
+ 1481  sudo mysql -u root -p2r3yAppV13WL0k verso_new <newvv.sql
+ 1482  cd ..
+ 1483  cd /
+ 1484  cd etc/nginx/
+ 1485  cd site-a
+ 1486  cd sites-available/
+ 1487  ls
+ 1488  nano versoview.com
+ 1489  sudo nano versoview.com
+ 1490  sudo systemctl restart nginx
+ 1491  sudo systemctl nginx stop
+ 1492  sudo systemctl stop nginx
+ 1493  sudo systemctl start nginx
+ 1494  sudo systemctl reload nginx
+ 1495  cd /
+ 1496  clear
+ 1497  sudo systemctl reload nginx
+ 1498  sudo systemctl restart nginx
+ 1499  cd etc/nginx
+ 1500  cd sites-available/
+ 1501  sudo nano versoview.com
+ 1502  clear
+ 1503  sudo systemctl restart nginx
+ 1504  cd /etc/nginx/sites-available/
+ 1505  ls
+ 1506  sudo nano versoview.com
+ 1507  sudo nano versoview.zre
+ 1508  sudo certbot --nginx -d new.versoview.com
+ 1509  cd /var/www/html
+ 1510  rm -rf wp-admin/
+ 1511  rm -rf wp-content/
+ 1512  rm -rf wp-includes
+ 1513  unzip wordpress-5.7.2.zip 
+ 1514  clear
+ 1515  unzip wordpress-5.7.2.zip 
+ 1516  chmod -R 777 wordpress/*
+ 1517  clear
+ 1518  rm -rf wordpress/
+ 1519  clear
+ 1520  ls
+ 1521  unzip wordpress-5.7.2.zip 
+ 1522  rm -rf wp-admin/
+ 1523  rm -rf wp-content/
+ 1524  rm -rf wp-includes/
+ 1525  cd ..
+ 1526  chmod -R 777 html/*
+ 1527  sudo chmod -R 777 html/*
+ 1528  passwd -S verso_wpftp
+ 1529  sudo passwd -S verso_wpftp
+ 1530  sudo service vsftpd restart
+ 1531  cd html
+ 1532  rm -rf wp-admin
+ 1533  rm -rf wp-content
+ 1534  rm -rf wp-content/
+ 1535  sudo rm -rf wp-content/
+ 1536  clear
+ 1537  sudo rm -rf wp-includes/
+ 1538  clear
+ 1539  sudo chmod -R 777 ../html/*
+ 1540  ls
+ 1541  unzip new_vv.zip 
+ 1542  mysql -u root -p2r3yAppV13WL0k verso_new < newvv.sql
+ 1543  cd /
+ 1544  cd etc/nginx/sites-available/
+ 1545  sudo nano versoview.com
+ 1546  sudo systemctl restart nginx
+ 1547  sudo nano new.versoview.com 
+ 1548  clear
+ 1549  sudo nano versoview.com
+ 1550  sudo nano new.versoview.com
+ 1551  cd /var/www/html/
+ 1552  ls
+ 1553  zip -r newvv.zip wp-admin/ wp-content/ wp-includes/
+ 1554  zip -r newvv.zip *
+ 1555  zip -r newvv.zip wp-admin/ wp-content/ wp-includes/
+ 1556  sudo mysql -u root
+ 1557  sudo service mysql restart
+ 1558  cd /var/www
+ 1559  ls
+ 1560  cd backend
+ 1561  ls
+ 1562  git fetch --all
+ 1563  git pull origin master
+ 1564  sudo nano .env
+ 1565  pm2 status
+ 1566  pm2 restart server
+ 1567  yarn
+ 1568  pm2 restart server
+ 1569  sudo nano .env
+ 1570  pm2 restart server
+ 1571  sudo nano .env
+ 1572  pm2 stop server
+ 1573  nodemon
+ 1574  cd app
+ 1575  ls
+ 1576  cd routes/
+ 1577  ls
+ 1578  sudo nano action.js 
+ 1579  ls
+ 1580  sudo nano action.js 
+ 1581  cd ../..
+ 1582  git fetch --all
+ 1583  git reset --hard origin master
+ 1584  git reset --hard
+ 1585  git pull origin master
+ 1586  cd app
+ 1587  ls
+ 1588  cd routes/
+ 1589  ls
+ 1590  nano action.js 
+ 1591  nodemon
+ 1592  cd ../..
+ 1593  nodemon
+ 1594  sudo nano .env
+ 1595  nodemon
+ 1596  sudo nano .env
+ 1597  ls
+ 1598  nodemon
+ 1599  sudo nodemon
+ 1600  nodemon
+ 1601  sudo nano .env
+ 1602  git status
+ 1603  nodemon
+ 1604  pm2 start server
+ 1605  pm2 stop server
+ 1606  nodemon
+ 1607  cd ..
+ 1608  ls
+ 1609  cd analitics
+ 1610  ls
+ 1611  cd ..
+ 1612  cd analitic
+ 1613  ls
+ 1614  cd ..
+ 1615  cd backend
+ 1616  ls
+ 1617  sudo rm -rf node_modules/
+ 1618  ls
+ 1619  yarn
+ 1620  ls
+ 1621  nodemon
+ 1622  sudo nano .env
+ 1623  nodemon
+ 1624  sudo nano .env
+ 1625  nodemon
+ 1626  pm2 start server
+ 1627  pm2 restart server
+ 1628  pm2 stop server
+ 1629  nodemon
+ 1630  sudo service mysql restart
+ 1631  sudo mysql -u root
+ 1632  sudo service mysql restart
+ 1633  nodemon
+ 1634  sudo mysql -u root
+ 1635  nodemon
+ 1636  cd /var/www
+ 1637  ls
+ 1638  cd html
+ 1639  ls
+ 1640  cd /etc/nginx/sites-available/
+ 1641  ls
+ 1642  sudo certbot --nginx -d versoview.com
+ 1643  ls
+ 1644  sudo cp versoview.com versoview.dng
+ 1645  ls
+ 1646  sudo certbot --nginx -d versoview.com
+ 1647  cd ..
+ 1648  cd /
+ 1649  cd /var/www/
+ 1650  ls
+ 1651  cd backend
+ 1652  ls
+ 1653  cd ..
+ 1654  cd analitic
+ 1655  ls
+ 1656  cd ..
+ 1657  cd analitics
+ 1658  ls
+ 1659  cd ..
+ 1660  ls
+ 1661  pm2 status
+ 1662  sudo mv backend /var/www/analitics
+ 1663  ls
+ 1664  cd analitics
+ 1665  ls
+ 1666  sudo mv backend be
+ 1667  ls
+ 1668  cd be
+ 1669  nodemon
+ 1670  git pull origin master
+ 1671  cd ../fe
+ 1672  ls
+ 1673  git pull origin master
+ 1674  ls
+ 1675  git status
+ 1676  sudo nano fe
+ 1677  sudo nano .env
+ 1678  pm2 stop fe
+ 1679  pm2 start fe
+ 1680  cd ..
+ 1681  cd be
+ 1682  ls
+ 1683  nodemon
+ 1684  sudo nano .env
+ 1685  ls
+ 1686  cd ..
+ 1687  ls
+ 1688  sudo chmod -R 777 be
+ 1689  cd be
+ 1690  nodemon
+ 1691  pm2 status
+ 1692  sudo netstat -lpn |grep :2000
+ 1693  kill -p 24084
+ 1694  sudo kill -p 24084
+ 1695  sudo netstat -lpn |grep :2000
+ 1696  kill -p 24084
+ 1697  kill -9 24084
+ 1698  sudo netstat -lpn |grep :2000
+ 1699  nodemon
+ 1700  sudo nano .env
+ 1701  nodemon
+ 1702  cd app
+ 1703  ls
+ 1704  cd config
+ 1705  ls
+ 1706  sudo nano db.js
+ 1707  sudo nano db.config.js 
+ 1708  cd ../..
+ 1709  sudo nano .env
+ 1710  nodemon
+ 1711  mysql -u root -p
+ 1712  sudo mysql -u root -p
+ 1713  sudo nano .env
+ 1714  sudo mysql -u root -p
+ 1715  sudo service mysql restart
+ 1716  nodemon
+ 1717  sudo mysql -u root -p
+ 1718  sudo service mysql restart
+ 1719  sudo nano .env
+ 1720  sudo service mysql restart
+ 1721  nodemon
+ 1722  sudo mysql -u root -p
+ 1723  sudo service mysql restart
+ 1724  nodemon
+ 1725  yarn
+ 1726  pm2 restart server
+ 1727  pm2 start server
+ 1728  nodemon
+ 1729  pm2 start server
+ 1730  ls
+ 1731  pm2 delete server
+ 1732  pm2 status
+ 1733  ls
+ 1734  pm2 start server.js --name "be"
+ 1735  cd ../fe
+ 1736  ls
+ 1737  yarn
+ 1738  git pull origin master
+ 1739  back.sh
+ 1740  cd /
+ 1741  cd var/www/html
+ 1742  mkdir openview/comment
+ 1743  cd /var/www/
+ 1744  ls
+ 1745  cd analitics
+ 1746  ls
+ 1747  cd fe
+ 1748  ls
+ 1749  git pull origin master
+ 1750  cd var
+ 1751  cd /var
+ 1752  cd www/panel
+ 1753  back.sh
+ 1754  cd backup/
+ 1755  ls *.sql 
+ 1756  ls *.sql -l
+ 1757  sudo service nginx restart
+ 1758  cd /var/www/
+ 1759  ls
+ 1760  cd analitics
+ 1761  ls
+ 1762  cd be
+ 1763  ls
+ 1764  git pull origin master
+ 1765  git status
+ 1766  pm2 status
+ 1767  git add -A
+ 1768  git commit -m "update all"
+ 1769  git status
+ 1770  git push -u origin master
+ 1771  git pull origin master
+ 1772  git status
+ 1773  git add -A
+ 1774  sudo nano .env
+ 1775  git fetch --all
+ 1776  git reset --hard
+ 1777  git pull origin master
+ 1778  sudo nano .env
+ 1779  pm2 restart be
+ 1780  cd ../fe
+ 1781  ls
+ 1782  git status
+ 1783  sudo nano .env
+ 1784  git add -A
+ 1785  git commit -m "update all"
+ 1786  git push -u origin master
+ 1787  sudo nano .env
+ 1788  git fetch --all
+ 1789  git reset --hard
+ 1790  git pull origin master
+ 1791  sudo nano .env
+ 1792  pm2 restart fe
+ 1793  git pull origin master
+ 1794  cd ../be
+ 1795  git pull origin master
+ 1796  clear
+ 1797  sudo service nginx restart
+ 1798  cd /var/www/
+ 1799  ls
+ 1800  cd analitics
+ 1801  ls
+ 1802  cd be
+ 1803  git pull origin master
+ 1804  cd ..
+ 1805  cd fe
+ 1806  git pull origin master
+ 1807  cd ../
+ 1808  cd be
+ 1809  pm2 restart server
+ 1810  pm2 restart be
+ 1811  ls
+ 1812  yarn
+ 1813  pm2 restart be
+ 1814  pm2 save
+ 1815  pm2 status
+ 1816  pm2 restart be
+ 1817  git pull origin master
+ 1818  pm2 restart be
+ 1819  cd ../fe
+ 1820  git pull origin master
+ 1821  ping versoview.com
+ 1822  cd /var/www/
+ 1823  ls
+ 1824  cd analitics
+ 1825  ls
+ 1826  cd be
+ 1827  cd ../fe
+ 1828  ls
+ 1829  git pull origin master
+ 1830  cls
+ 1831  ls
+ 1832  cd danang
+ 1833  ls
+ 1834  cd /
+ 1835  ls
+ 1836  cd home
+ 1837  ls
+ 1838  cd ..
+ 1839  cd usr
+ 1840  ls
+ 1841  cd ..
+ 1842  ls
+ 1843  cd home
+ 1844  ls
+ 1845  cd danang
+ 1846  ls
+ 1847  pdftohtml may.pdf may.xml
+ 1848  pdftohtml -xml may.pdf
+ 1849  magick -version
+ 1850  wget https://www.imagemagick.org/download/ImageMagick.tar.gz
+ 1851  tar xvzf ImageMagick.tar.gz
+ 1852  ls
+ 1853  cd ImageMagick-7.1.0-2
+ 1854  ls
+ 1855  ./configure
+ 1856  make
+ 1857  sudo make install 
+ 1858  sudo ldconfig /usr/local/lib
+ 1859  magick -v
+ 1860  magick -version
+ 1861  cd ..
+ 1862  ls
+ 1863  convert may.pdf may.xml
+ 1864  convert may.pdf may.png
+ 1865  convert may.pdf sample.jpeg
+ 1866  convert -list configure | grep -i "delegates"
+ 1867  convert -list configure
+ 1868  DELEGATES bzlib jpeg jng png tiff x11 xml zlib
+ 1869  identify -list configure
+ 1870  identify -version
+ 1871  convert -density 600 may.pdf[0] -colorspace RGB -resample 300 output.jpg
+ 1872  ls
+ 1873  convert -density 600 may.pdf[0] -colorspace RGB -resample 300 output.jpg
+ 1874  ls
+ 1875  cd ImageMagick-7.1.0-2/
+ 1876  ls
+ 1877  ./configure
+ 1878  make
+ 1879  make install
+ 1880  sudo make install
+ 1881  ./configure
+ 1882  identify -version
+ 1883  convert -density 600 may.pdf[0] -colorspace RGB -resample 300 output.jpg
+ 1884  convert -version
+ 1885  cd ..
+ 1886  l
+ 1887  convert -density 600 may.pdf[0] -colorspace RGB -resample 300 output.jpg
+ 1888  sudo apt-get install imagemagick --with-little-cms
+ 1889  sudo apt-get -s build-dep imagemagick
+ 1890  apt-get -s build-dep imagemagick
+ 1891  sudo apt-get install checkinstall libwebp-dev libopenjp2-7-dev librsvg2-dev sudo apt-get install checkinstall libwebp-dev libopenjp2-7-dev librsvg2-dev
+ 1892  identify -version
+ 1893  sudo apt-get build-dep imagemagick libde265 libheif
+ 1894  clear
+ 1895  cd /var/www
+ 1896  ls
+ 1897  cd analitics
+ 1898  ls
+ 1899  cd be
+ 1900  git pull origin master
+ 1901  cd ../fe
+ 1902  ls
+ 1903  git pull origin master
+ 1904  cd /var/www/
+ 1905  ls
+ 1906  php -v
+ 1907  cd /etc/nginx
+ 1908  ls
+ 1909  cd sites-available/
+ 1910  ls
+ 1911  sudo nano new.versoview.com 
+ 1912  cd /var/www/newvv
+ 1913  ls
+ 1914  cd ..
+ 1915  sudo chmod -R 777 newvv
+ 1916  sudo update-alternatives --config php
+ 1917  sudo a2dismod php7.1
+ 1918  sudo apt-get install a2dismod
+ 1919  sudo a2dismod php7.1
+ 1920  cd /etc/nginx/sites-available/
+ 1921  ls
+ 1922  sudo nano new.versoview.com 
+ 1923  sudo service nginx restart
+ 1924  sudo nano new.versoview.com 
+ 1925  sudo service nginx restart
+ 1926  sudo service php8.0-fpm restart
+ 1927  apt list --installed | grep "php*"
+ 1928  add-apt-repository ppa:ondrej/php
+ 1929  sudo add-apt-repository ppa:ondrej/php
+ 1930  sudo apt-get update
+ 1931  apt-get install php8.0 php8.0-fpm php8.0-xml php8.0-mysql php8.0-gd
+ 1932  sudo apt-get install php8.0 php8.0-fpm php8.0-xml php8.0-mysql php8.0-gd
+ 1933  sudo service nginx restart
+ 1934  sudo update-alternatives -set php /usr/bin/php8.0
+ 1935  nginx -t
+ 1936  sudo update-alternatives --config php
+ 1937  service nginx restart
+ 1938  sudo service nginx restart
+ 1939  sudo service php8.0-fpm or php8.0-fpm  restart
+ 1940  sudo fastcgi_pass unix:/run/php/php5.6-fpm.sock;
+ 1941  udo apt-get install php8.0-fpm
+ 1942  sudo apt-get install php8.0-fpm
+ 1943  ls
+ 1944  sudo nano new.versoview.com 
+ 1945  sudo apt install php8.0-fpm
+ 1946  sudo systemctl status php8.0-fpm
+ 1947  sudo apt update
+ 1948  sudo apt upgrad
+ 1949  sudo add-apt-repository ppa:ondrej/php
+ 1950  sudo apt install php8.0-fpm
+ 1951  sudo systemctl status php8.0-fpm
+ 1952  sudo add-apt-repository ppa:ondrej/php
+ 1953  sudo apt update
+ 1954  sudo apt upgrade
+ 1955  php -v
+ 1956  sudo apt-get install php8.0 apache2- apache2-bin-
+ 1957  sudo apt-get install php8.0-fpm php8.0-pdo php8.0-mysql php8.0-zip php8.0-mbstring php8.0-curl php8.0-xml php8.0-bcmath php8.0-imagick
+ 1958  php-fpm8.0 -v
+ 1959  sudo apt -y install php7.4
+ 1960  sudo apt-get update
+ 1961  sudo apt -y install software-properties-common
+ 1962  sudo add-apt-repository ppa:ondrej/php
+ 1963  sudo apt-get update
+ 1964  sudo apt -y install php7.4
+ 1965  sudo apt install -y php7.4
+ 1966  sudo adduser danang
+ 1967  sudo chown nobody:nogroup /var/www/newvv
+ 1968  sudo chmod a-w /var/www/newvv
+ 1969  sudo ls -la /var/www/newff
+ 1970  sudo ls -la /var/www/newvv
+ 1971  sudo mkdir /var/www/newvv/ftp
+ 1972  sudo chown danang:danang /var/www/newvv/ftp
+ 1973  sudo ls -la /var/www/newvv
+ 1974  sudo nano /etc/vsftpd.conf
+ 1975  ftp -p 35.240.132.199
+ 1976  cd /var/www/newvv
+ 1977  ls
+ 1978  cd ftp
+ 1979  ls
+ 1980  cd /home
+ 1981  cd danang
+ 1982  ls
+ 1983  sudo systemctl restart vsftpd.service
+ 1984  ls
+ 1985  sudo chown sammy:sammy /var/www/newvv/wp-content
+ 1986  sudo chown danang:danang /var/www/newvv/wp-content
+ 1987  sudo systemctl restart vsftpd.service
+ 1988  sudo usermod -d /var/www/newvv/wp-content -m danang
+ 1989  sudo usermod -a -G www-data danang
+ 1990  sudo chgrp -R www-data /var/www/newvv/wp-content
+ 1991  sudo chmod -R g+w /var/www/newvv/wp-content
+ 1992  sudo systemctl restart vsftpd.service
+ 1993  cd /var/www
+ 1994  ls
+ 1995  cd analitics
+ 1996  ls
+ 1997  cd fe
+ 1998  git pull origin master
+ 1999  ls
+ 2000  clear
+ 2001  ls
+ 2002  history
+ 2003  clear
+ 2004  cd /var 
+ 2005  cd www/
+ 2006  ls
+ 2007  cd html/
+ 2008  ls
+ 2009  cat history >s.txt
+ 2010  cat history s.txt
+ 2011  history
+ 2012  clear
+ 2013  cd..
+ 2014  cd  ..
+ 2015  cd panel
+ 2016  history >his.txt

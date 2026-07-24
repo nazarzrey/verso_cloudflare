@@ -1,0 +1,14 @@
+
+
+    .logo-versoview{width: 100%;}
+    .container{padding:0 10%;text-align: center;}
+    .input{margin-top:-20px;}
+    .container input{padding:10px;width:200px;border-radius:2px;border:solid 1px #ddd;margin-top:5px;}
+    .container .login{border:solid 1px #ac9a7d;width:100px;background: #f7f9f8}
+    .container .login:hover{color:#f7f9f8;width:100px;background: #ac9a7d}
+	.hbspt-form{width:100%;text-align:center !important;}
+	@media screen and (max-width: 1199px) {
+		.logo-versoview{width: }
+	}
+	@media screen and (max-width: 768px) {
+	}

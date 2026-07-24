@@ -1,0 +1,177 @@
+function empty_check(array,id,$form){
+	data = array.split(",");
+	$result = "y";
+	if(data.length>0){
+		$.each(data,function(i){
+			$element = elem(id)+data[i];
+			//alert($element);
+			$($element).removeClass("ver-brd4");
+			if($($element).val().length==0){
+				$($element).focus().addClass("ver-brd4");
+				$(".message-info").show().html("empty input is required");
+				$result = "n";
+				return false;
+			}else{
+				if (data[i].indexOf('mail') >= 0) {
+					$mail = $($element).val();
+					if(mail($mail)=="X"){
+						$($element).focus().addClass("ver-brd4");
+						$(".message-info").show().html("this input must email");
+						$result = "n";
+						return false;
+					}
+				}
+			}
+		})
+	}
+	if($result=="y"){
+		$(".message-info").show().toggleClass("alert-danger").html("process...");	
+		//$($form+" .message-info").show().toggleClass("alert-danger").html("process...");	
+	}
+	return $result;
+}
+function elem(elem){
+	if(elem=="id"){
+		elem = "#";
+	}else{
+		elem = ".";
+	}
+	return elem;
+}
+
+function mail(v_mail){
+	var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+	if (testEmail.test(v_mail)){
+		return "Y";
+	}else{
+		return "X";
+	}
+}
+
+function refresh(url,time){
+	setTimeout(
+		function() {	
+    	loader("hide");	
+		window.location.href=url;					 
+		},
+	time);
+}
+function base_url($url){
+	return $("#base-url").attr("data-id")+$url;
+}
+function fsz(kb){
+	angka = 0;
+	if(kb<1024){
+		byte = "Kb";
+		angka = kb / 1024;
+	}else if(kb>=1024 || kb<1024000){
+		byte = "Mb";
+		angka = kb / 1024000;
+	}else if(kb>=1024000 || kb<1024000000){
+		byte = "Gb"
+		angka = kb / 1024000000;
+	}else{
+		byte = "Tb";
+		angka = kb / 1024000000000;
+	} 
+	return angka.toFixed(2)+" "+byte;
+}
+/*
+
+function refresh(url,dtl){
+	loader("s")
+	if(dtl.length==0){
+		if(url=="home"){
+			url = "";
+		}else{
+			url = url;
+		}
+		directed = url; 
+		window.location.href=directed;	
+	}else{	
+		window.location.href=url;		
+	}
+}*/
+
+function loader(fungsi){
+	if(fungsi=="s" || fungsi=="show"){
+		$("#loader").fadeIn();
+		//setTimeout(function(){ $("#loader").fadeOut(); }, 7500);
+	}else if(fungsi=="unl"){
+		$("#loader").fadeIn();
+	}else{
+		$("#loader").hide();		
+	}
+}
+function loader2(fungsi){
+	if(fungsi=="s" || fungsi=="show"){
+		$("#loader2").fadeIn();
+		//setTimeout(function(){ $("#loader").fadeOut(); }, 7500);
+	}else if(fungsi=="unl"){
+		$("#loader2").fadeIn();
+	}else{
+		$("#loader2").hide();		
+	}
+}
+function issue_content($issue){
+	var jqXHR = $.ajax({
+		url   : base_url('xhr/issue/'+$issue),
+		async : false
+	});
+	return jqXHR.responseText;	
+}
+function issue_cover($magz_id){
+	var jqXHR = $.ajax({
+		url   : base_url('xhr/issue_cover/'+$magz_id),
+		async : false
+	});
+	return jqXHR.responseText;	
+}
+function msg1($text){	
+/*	Swal.fire({
+	  type: 'success',
+	  title: 'Thank you \n for uploading your magazines',
+	  text: 'Click the cover to convert for Web Page Turner and Android iOS apps!'
+	  // footer: '<a href>Why do I have this issue?</a>'
+	});
+	*/
+	Swal.fire({
+		title:  $text,
+		confirmButtonColor: '#ff2e44'
+		// type:  'success'
+	})
+}
+function msg2($title,$text,$refresh){	
+	if($title.length==0){
+		$title = "Thank you";
+	}else{
+		$title = $title;
+	}
+/*	Swal.fire({
+	  type: 'success',
+	  title: 'Thank you \n for uploading your magazines',
+	  text: 'Click the cover to convert for Web Page Turner and Android iOS apps!'
+	  // footer: '<a href>Why do I have this issue?</a>'
+	});
+	*/
+	Swal.fire({
+		  title: $title,
+		  text:  $text,
+		  //type:  'success',
+		  confirmButtonColor: '#ff2e44',
+		  confirmButtonText: 'OK',
+		  allowOutsideClick:false
+		}).then((result) => {
+		  if (result.value) {
+		  	if($refresh.length==0){
+		  		refresh("",100);
+		  	}else{
+		  		refresh($refresh,100);
+		  	}
+		  }
+		})
+}
+function refresh2(){
+	alert("s");
+}
+//msg2("great","Xx","");

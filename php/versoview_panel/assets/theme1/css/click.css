@@ -1,0 +1,88 @@
+/* CSS3 */
+
+/* The whole thing */
+.custom-menu {
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  overflow: hidden;
+  /*     border: 1px solid #CCC; */
+  white-space: nowrap;
+  font-family: sans-serif;
+  color: #333;
+  padding: 0;
+  border-radius: 3px;
+  font-size: 15px;
+  width: 340px;
+}
+#content-section2 {
+  border-radius: none !important;
+  width: 50%;
+}
+.modal {
+  display: block;
+  position: relative;
+}
+.modal-dialog {
+  padding: 5px;
+}
+.modal-content {
+  border: solid 1px #ddd;
+  background-color: #f0f2f5;
+  box-shadow: 1px 1px 5px #ddd;
+}
+.modal-footer {
+  display: block;
+}
+/* .modal-dialog{border:solid 1px #a78948;border-radius:5px} */
+.modal-header,
+.modal-body,
+.modal-footer {
+  padding: 7px 10px;
+}
+.modal-header,
+.modal-footer {
+  background-color: #fff;
+}
+.modal-header {
+  border-bottom: 1px solid #d7d8da;
+}
+.modal-body p {
+  white-space: pre-wrap;
+  line-height: 15pt;
+}
+.modal-body {
+  height: 110px;
+  overflow: hidden;
+}
+.modal-footer {
+  border-top: 1px solid #d7d8da;
+  margin-top: 10px;
+}
+.custom-menu p,
+.custom-menu .form-control {
+  font-size: 14px;
+}
+.custom-menu .form-control {
+  padding: 2px 5px;
+}
+/* Each of the items in the list */
+/* .custom-menu li {
+      padding: 1px 10px;
+      list-style-type: none;
+      transition: all .3s ease;
+      user-select: none;
+      background: #fff;
+      color: #000;    
+      border:solid 1px #a98b54 !important;
+      border-radius: 3px;
+  }
+  
+  .custom-menu li:hover {
+      border:solid 1px;
+      border-radius: 3px;
+  } */
+.spanhover {
+  background-color: #e1c694;
+  padding: 2px 0;
+}

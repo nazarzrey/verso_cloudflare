@@ -1,0 +1,141 @@
+<?php
+#ajaxrequest adalah yang systemnya get
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Viewopenstat extends CI_Controller {
+	function __construct() {
+		parent::__construct();
+    	$this->load->library('session');
+    	$this->load->model(array('User_activity','Mod_openview'));
+	}
+	#index
+	public function index($id='',$page='',$open='',$img=''){	
+		$link = $this->Mod_openview->link($id);
+
+		// debug($link,"");
+		$data["msturi"]   = $link->issue_path;
+		if(!empty($img)){
+			echo  $data["msturi"]."files/extfile/".$img;
+		}else{
+			if(empty($id)){
+				echo  json_encode(array("result"=>"this ajax openview ".$id));
+			}else{
+				#$return = $this->Mod_openview->openview_hdr($id,$page);
+				#echo $return;
+				$data_page  = min_space($page,"-");
+				#echo "xx".$id.$data_page.current_url();
+				$v_hdr = $this->Mod_openview->openview_hdr($id,$data_page);
+				$v_dtl = $this->Mod_openview->openview_dtl($id,"all");
+
+	    		#if(Host()=="localhost"){ 
+	    		#}
+				#var_dump($v_hdr[0]->magz_name);
+				###if($v_dtl=="0"){
+				    $data["hdr_openview"] = $v_hdr;
+				###}else{
+			    	$data["dtl_openview"] = $v_dtl;
+			    ###}
+			    $data["hdr_id"]   = $id;
+			    $data["hdr_page"] = $data_page;
+			    $data["halaman"]  = $page;
+			    if(!empty($open)){
+	   				#$this->load->view("backend/202101_1/openview_template_single",$data);
+			    }else{
+			    	if(!empty($page)){
+					    $this->load->view("templates/202101_1/openview_header",$data);
+					    $this->load->view("backend/202101_1/openview_template_stat",$data);
+					    $this->load->view("templates/202101_1/openview_footer");
+					}else{
+						$this->load->view("backend/202101_1/openview_template_stat",$data);						
+					}
+				}
+			}
+		}
+	}	
+	public function api($id=''){
+		$path  = $this->Mod_openview->api($id);
+		#var_dump($path);
+		#var_dump($path);
+		$arr[] = array("path_flipbook"=>$path->ov_flipbook,"path_openview"=>$path->ov_openview);
+		#header('Content-type: application/json');
+		echo json_encode($arr);
+	}
+	public function ovi_gambar($id_gambar=""){
+
+	}
+	public function yang_isi_anantara(){
+		$data = $this->Mod_openview->yang_isi_anantara();
+		#var_dump($data);
+		if($data){
+			if(count($data)>0){
+				foreach ($data as $key => $d) {
+					$arr[] = array(
+						"title"=>$d->title,
+						"content"=>$d->content,
+						"lead"=>$d->lead,
+						"magz_page"=>$d->magz_page,
+					);
+				}
+			}else{
+				$arr = array("");
+			}
+		}else{
+			$arr = array("");
+		}
+		echo json_encode($arr);
+	}
+
+	public function detil_isi_anantara($id){
+		$data = $this->Mod_openview->detil_isi_anantara($id);
+		#var_dump($data);
+		if($data){
+			if(count($data)>0){
+				foreach ($data as $key => $d) {
+					$arr[] = array(
+						"title"=>$d->title,
+						"content"=>$d->content,
+						"body_text"=>$d->body_text,
+						"caption"=>$d->caption,
+						"lead"=>$d->lead,
+						"magz_page"=>$d->magz_page,
+					);
+				}
+			}else{
+				$arr = array("");
+			}
+		}else{
+			$arr = array("");
+		}
+		echo json_encode($arr);
+	}
+
+	public function detail_isi_anantara($id){
+		$data = $this->Mod_openview->detail_isi_anantara($id);
+		#var_dump($data);
+		if($data){
+			if(count($data)>0){
+				foreach ($data as $key => $d) {
+					$arr[] = array(
+						"title"=>$d->title,
+						"content"=>$d->content,
+						"body_text"=>$d->body_text,
+						"caption"=>$d->caption,
+						"lead"=>$d->lead,
+						"magz_page"=>$d->magz_page,
+					);
+				}
+			}else{
+				$arr = array("");
+			}
+		}else{
+			$arr = array("");
+		}
+		echo json_encode($arr);
+	}
+/*
+	public function openview(){
+		echo $return;
+	}
+*/
+
+}

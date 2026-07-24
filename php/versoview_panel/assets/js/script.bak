@@ -1,0 +1,603 @@
+$(document).ready(function(){
+	$(".left-menu .xclose").click(function(){
+		$(".cover-page").hide();
+	})
+	$(".xopen").click(function(){
+		$(".cover-page").show();
+	})
+	$(".cover-page").click(function(){
+		if($('.left-menu').is(':hover')==false){
+			$(this).hide();
+		}
+	})
+	$(".category").click(function(){
+		$id = $(this).attr("id");
+		//msg1($id);
+		$(".data_cover").each(function(){
+			$gid = $(this).attr("id");
+			if($gid!=$id){
+				$(this).hide();
+			}else{
+				$(this).fadeIn();
+			}
+		})
+	})
+	$(".category_all").click(function(){		
+		$(".data_cover").fadeIn();
+	})
+	$(".edit-magz-button .fa-trash").click(function(){
+		content = $(".edit-magz-slide-content");
+		content.css({"width":"100%","border":"solid 1px tomato !important"});
+		$("#edit-magz .keluar").hide();
+	})
+	$(".edit-magz-slide-content .close1").click(function(){
+		$(".edit-magz-slide-content").css({"width":"0","border":"none"});	
+		$("#edit-magz .keluar").show();	
+	})
+	$('#edit-magz').on('hide.bs.modal', function (event) {
+	    $(this).find(".progress2").hide();
+	    $(".progress2 .progress-bar").css("width","0");
+	    clearInterval(event);
+	})
+    $('#edit-magz').on('show.bs.modal', function (event) {
+        var btn   = $(event.relatedTarget); // Button that triggered the modal   
+        var magz  = btn.data('magz'); // Extract info from data-* attributes
+        var modal = $(this);
+        var vcls  = btn.attr('class');
+        var img   = btn.find('p').data('img');
+        var txt   = "Total PDF page : "+btn.data('page');
+        var cont  = JSON.parse(issue_content(magz));
+        var xpath = cont.result["ipath"];
+		//$id_class = "result-"+$frm_id.replace("#","").replace(".","");
+        $(".emagz-tittle-button .btn").hide();
+        if(cont.result["iconvert"]==0){
+        	$(".st-2").show();
+        }else if(cont.result["iconvert"]==1){
+        	$(".st-3,.st-7").show();
+        }else if(cont.result["iconvert"]==2  && cont.result["ipublish"]==0){
+        	$(".st-4").show();
+        }else{
+			$(".st-5").attr("href",base_url(cont.result["dynamic_url"]));
+        	$(".st-5,.st-6").show();
+        }
+        //msg1(cont.result["idesc"]);
+
+	    modal.find(".progress2").hide();
+        modal.find(".emagz-tittle-button h3").text(cont.result["ititle"]);
+        modal.find(".emagz-img-desc").html("<p>"+cont.result["idesc"]+"</p>");
+        modal.find(".emagz-img img").attr("src",img);
+        //modal.find("#convert-issue,#convert-proses,#magazine-publish,#magazine-issue").attr("magz-id",magz);
+		modal.find(".emagz-tittle-button").attr("magz-id",magz);
+        modal.find(".issue-content-data").html(txt);
+        modal.find(".edit-magz-button").attr("magz-id",magz);
+
+        if(xpath && cont.result["iconvert"]==1){
+        	var path  = xpath.replace("/","_");
+	        modal.find(".progress2").fadeIn();
+	        $(".progress2 .progress-bar").css("width","0");
+			progress_convert(path,cont.result["ipage"]);
+        }
+    })
+	/*register*/
+	$("#frm-register button").click(function(){
+		$id = "#"+$(this).parent("form").attr("id");
+		if(empty_check("reg-name,reg-mail,reg-pass","id",$id)=="y"){
+			$.ajax({
+				type : 'POST',
+				url  : base_url('ajax/user/register'),
+				dataType : 'json',
+				data : $($id).serialize(),
+				success: function(data, status, xhr){
+					if(data["status"]=="0"){
+						$($id+" .message-info").show().removeClass("alert-info").addClass("alert-success").html("success, please wait");
+						//msg1(base_url("login"));
+						refresh(base_url("login"),"2000");
+					}else{
+						$($id+" .message-info").show().addClass("alert-danger").html("data already exists");
+					}
+				},
+				error: function(xhr, status, error) {
+					msg1(error)
+				}
+			})
+		}
+	})
+
+	$("#frm-login button").click(function(){
+		$id = "#"+$(this).parent("form").attr("id");
+		if(empty_check("log-name,log-pass","id",$id)=="y"){
+			$.ajax({
+				type : 'POST',
+				url  : base_url('ajax/user/login'),
+				dataType : 'json',
+				data : $($id).serialize(),
+				success: function(data, status, xhr){
+					if(data["status"]=="1"){
+						$($id+" .message-info").show().removeClass("alert-info").addClass("alert-success").html("success, please wait");
+						//msg1(base_url("login"));
+						//refresh(base_url("login"),"2000");
+						//msg1($id);
+						$($id).submit();
+					}else{
+						$($id+" .message-info").show().addClass("alert-danger").html("user not found...!!!");
+					}
+				},
+				error: function(xhr, status, error) {
+					msg1(error)
+				}
+			})
+		}
+	})
+
+	/*magazine created*/
+	$("#image-holder").click(function() {
+        $("input[id='my_file']").click();
+    });
+	/*$("#cvr-from-issue").click(function(){
+		
+	})*/
+    // get pdf check
+    $(".new-image").on('change', function (e) {
+    	var file = e.target.files[0]
+		if(file.type == "application/pdf"){
+			var fileReader = new FileReader();  
+			fileReader.onload = function() {
+				var pdfData = new Uint8Array(this.result);
+				// Using DocumentInitParameters object to load binary data.
+				var loadingTask = pdfjsLib.getDocument({data: pdfData});
+				loadingTask.promise.then(function(pdf) {
+				  console.log('PDF loaded');
+				  
+				  // Fetch the first page
+				  var pageNumber = 1;
+				  pdf.getPage(pageNumber).then(function(page) {
+					console.log('Page loaded');
+					
+					var scale = 1.5;
+					var viewport = page.getViewport({scale: scale});
+
+					// Prepare canvas using PDF page dimensions
+					var canvas = $("#pdfViewer")[0];
+					var context = canvas.getContext('2d');
+					canvas.height = viewport.height;
+					canvas.width = viewport.width;
+
+					// Render PDF page into canvas context
+					var renderContext = {
+					  canvasContext: context,
+					  viewport: viewport
+					};
+					var renderTask = page.render(renderContext);
+					renderTask.promise.then(function () {
+					  console.log('Page rendered');
+					});
+				  });
+				}, function (reason) {
+				  // PDF loading error
+				  console.error(reason);
+				});
+			};
+			fName = file.name;
+			if(file.size>153600000){
+				$("#pdf_submit").hide();
+				$("#pdf_submit-info").attr("style","display:block");
+			}else{
+				$("#pdf_submit").show();
+				$("#pdf_submit-info").attr("style","display:none");
+				//$(".pdf_submit").val($(".pdf_submit").attr().length);
+			}
+			fSize = fsz(file.size);
+	        //fileReader.readAsBinaryString(files[i]);
+			$("#image-holder img").hide();
+			$(".file-info").html(fName+" - "+fSize);
+			$("#image-holder canvas").show();
+			fileReader.readAsArrayBuffer(file);
+		}        
+    });
+    $("#magz-create").click(function(){
+	    loader("show");
+    	var $id = $(this).attr("id");
+        var uid = $("#uid").val();
+        var jdl = $("#nmagz").val();
+        var kat = $("#cmagz").val();
+        var des = $("#dmagz").val();
+        if(kat.length=="x" || jdl.length==0 || des.length==0){
+            msg1("Please fill in the description of your magazine");
+        }else{
+        	$.ajax({
+				type :'POST',
+				url  : base_url("ajax/newmagz/"),
+				dataType : 'json',
+				data : $("#f"+$id).serialize(),
+				success: function(data, status, xhr){
+					if(data["result"]=="0"){
+						refresh(base_url("backend"),"1000");
+					}else{
+						//msg1("success create new Magazine, for add new issue click Add Magazine Issue");
+
+						//$title = 'success create new Magazine  for add new issue click Add Magazine Issue',
+						$title = "New magazine area created\n to add magazine issues, click 'Add Magazine Issue'",
+						$text  = '',
+						$refrh = base_url("backend/"+data["result"]);
+		                msg2($title,$text,$refrh);
+						//refresh(base_url("backend/"+data["result"]),"1000");
+						//$($id+" .message-info").show().addClass("alert-danger").html("data already exists");
+					}
+				},
+				error: function(xhr, status, error) {
+	        		loader("hide");
+					msg1(error)
+				}
+			})
+        }
+    })   
+    $("#pdf_submit").click(function(){
+        var kat = $("#pdf_category").val();
+        var jdl = $("#pdf_title").val();
+        var ket = $("#pdf_desc").val();
+        var pdf = $("#my_file").val();
+        if(kat.length==0 || jdl.length==0 || ket.length==0){
+            msg1("Please fill in the description of your magazine");
+        }else{
+        	if(pdf.length==0){
+	            msg1("Please click on the PDF icon on the left, to select your magazine");
+        	}else{
+				$.getJSON(base_url("xhr/title/"+jdl+"/"+kat),function(data,status){
+					if(status=="success"){
+						if(data["result"]==0){
+    						$("#pdf_submit").hide();
+	            			$(".data_pdf").submit();
+						}else{
+		               		msg1("magazine title already exists");
+						}
+					}else{
+						msg1("error ajax");
+					}
+				});	
+			}
+        }
+    })   
+    /*$(".blink").animate({opacity:0},200,"linear",function(){
+	  $(this).animate({opacity:1},200);
+	});*/	
+    $('.data_pdf').submit(function(evt) {
+    	loader2("show");
+    	$(this).find("input,select,button,textarea").attr("readonly",true);
+        var i_class = $(this).attr("class");
+        evt.preventDefault();
+        var formData = new FormData(this);
+		var data = [];
+		for (var i = 0; i < 100000; i++) {
+		    var tmp = [];
+		    for (var i = 0; i < 100000; i++) {
+		        tmp[i] = 'hue';
+		    }
+		    data[i] = tmp;
+		};
+    	$(".progress-bar,.pdf_proses,.progress").show();
+		blink("blink");
+        $.ajax({
+	        type: 'POST',
+	        url: base_url("ajax/upload"),
+	        data:formData,
+	        cache:false,
+	        contentType: false,
+	        processData: false,
+	        dataType: 'json',
+		    xhr: function () {
+		        var xhr = new window.XMLHttpRequest();
+		        xhr.upload.addEventListener("progress", function (evt) {
+		            if (evt.lengthComputable) {
+		                var percentComplete = evt.loaded / evt.total;
+		                console.log(percentComplete);
+		                $('.progress').css({
+		                    width: percentComplete * 100 + '%'
+		                });
+		                if (percentComplete === 1) {
+		                    //$('.progress').addClass('hide');
+		                }
+		            }
+		        }, false);
+		        xhr.addEventListener("progress", function (evt) {
+		            if (evt.lengthComputable) {
+		                var percentComplete = evt.loaded / evt.total;
+		                console.log(percentComplete);
+		                $('.progress').css({
+		                    width: percentComplete * 100 + '%'
+		                });
+		            }
+		        }, false);
+		        return xhr;
+		    },
+	        success: function(data) {
+				// status 1=ok insert,2=ok change image
+				//msg1(data);
+	            if(data[0]=="1"){
+					$title = 'Thank you \n for uploading your magazines',
+					$text  = 'Click the cover to convert for Web Page Turner and Android iOS apps!'
+					$refrh = "";
+	                msg2($title,$text,$refrh);
+	            }else if(data[0]=="2"){
+	        		loader2("hide");
+    				$("#pdf_submit").show();
+    				$(".progress-bar,.pdf_proses,.progress").hide();
+	                msg1("error insert, please try again");
+	            }else{
+	        		loader2("hide");
+    				$("#pdf_submit").show();
+    				$(".progress-bar,.pdf_proses,.progress").hide();
+	                msg1(data);
+	                return
+	            }
+	        },
+	        error: function(data) {
+	        	loader2("hide");
+    			$("#pdf_submit").show();
+    			$(".progress-bar,.pdf_proses,.progress").hide();
+	            msg1("error pharse ajax");
+	        }
+        });
+    	$(this).find("input,select,button,textarea").attr("readonly",false);
+        /*
+        $.ajax({
+	        type: 'POST',
+	        url: base_url("xhr/upload"),
+	        data:formData,
+	        cache:false,
+	        contentType: false,
+	        processData: false,
+	        dataType: 'json',
+	        success: function(data) {
+				//0 sukses,2=gagal insert,1=hdr ada
+	            if(data[0]=="0"){
+	                //$("#submit_popup").show();
+	                //msg1("sukses")
+	                //msg1("upload success");
+	                //refresh("submit_pdf.html","1");
+	                refresh(base_url(data[3]),300)
+	            }else if(data[0]=="1"){
+	        		loader("hide");
+	               msg1("Please fill in the description of your magazine"); 
+	            }else if(data[0]=="2"){
+	        		loader("hide");
+	                msg1("error insert, please try again");
+	            }else{
+	        		loader("hide");
+	                msg1("Please click on the PDF icon on the left, to select your magazine")
+	                return
+	            }
+	        },
+	        error: function(data) {
+	            msg1("Please click on the PDF icon on the left, to select your magazine.");
+	        }
+        });*/
+    });
+    $("#convert-magazine").click(function(){
+    	loader("s");
+    	$mid = $(this).attr("magz-id");
+    	$uid = $(this).attr("user-id");
+    	
+        $.get(base_url("xhr/convert_pdf/"+$mid),function(data,status,error){ 
+           if(status=="success"){
+        		//loader("h");
+				if(data=="cekfile"){
+					$msg="convert error please check your pdf file or reupload file";
+				}else if(data=="ok"){
+					$msg="convert done go to pageturner button ";
+				}else{
+					$msg=data;
+				}
+                msg1($msg);
+				window.location.href=window.location.href;
+            }else{
+                msg1(error);
+            }
+
+        });   
+    })
+    $(".keluar").click(function(){
+    	$data = $(this).attr("data-dismiss");
+    	if($data=="xmodal"){
+    		refresh("",100)
+    	}
+    })
+    $("#issue-conv").click(function(){
+    	//loader("s");
+    	$id = $(this).parent("div").attr("magz-id");
+    	$("#edit-magz").find(".keluar").attr("data-dismiss","xmodal");
+        $.get(base_url("xhr/convert_issue/"+$id),function(data,status,error){ 
+           if(status=="success"){
+				if(data=="cekfile"){
+					$msg="convert error please check your pdf file or reupload file";
+				}else{
+           		  vData = data.split("_");
+					if(vData[0]=="process"){
+				        $(".emagz-tittle-button .btn").hide();				        
+        				$(".st-3,.st-7").show();
+				        $(".progress2").fadeIn();
+						progress_convert(vData[1]+"_"+vData[2],vData[3]);
+						//$msg="convert done go to publish button, for publish your magazine issue ";
+					}
+				}
+        		loader("h");
+            }else{
+                msg1(error);
+            }
+
+        });   
+    })	
+    $("#magz-prc").click(function(){
+    	loader("s");
+    	$id = $(this).parent("div").attr("magz-id");
+    	$("#edit-magz").find(".keluar").attr("data-dismiss","xmodal");
+        $.getJSON(base_url("xhr/publish_issue/"+$id),function(data,status,error){ 
+           if(status=="success"){
+        		loader("h");
+           		 if(data[0]=="ok"){
+					msg1("Success \n published to Page Turner and Android iOS apps");
+			        $(".emagz-tittle-button .btn").hide();
+			        $(".st-5").attr("href",data[1]);
+			        $(".st-5,.st-6").show();
+			        //msg1(data[1]);
+           		 }
+            }else{
+                msg1(error);
+            }
+
+        });
+    })	
+    /* $("#dele-magazine").click(function(){
+    	loader("s");
+    	$mid = $(this).attr("magz-id");
+    	$uid = $(this).attr("user-id");
+        $.get(base_url("xhr/dele/magz/"+$mid+"/del"),function(data,status,error){ 
+           if(status=="success"){
+			   if(data=="x"){
+				   msg1("data not found");
+			   }else if(data=="1"){
+				   msg1("success deleted");
+	               refresh(base_url("admin"),300)
+			   }else{
+					msg1("error deleted, please try again");
+			   }
+            }else{
+                msg1(error);
+            }
+
+        });   
+    })	 */
+	$("#confirm-delete").click(function(){
+    	loader("s");
+    	$mid = $(this).attr("magz-id");
+    	$uid = $(this).attr("user-id");
+        $.get(base_url("ajax/dele/magz/"+$mid+"/hdr"),function(data,status,error){ 
+           if(status=="success"){
+			   if(data=="x"){
+				   msg1("data not found");
+			   }else if(data=="1"){
+				   msg2("success deleted","",base_url("backend"));
+			   }else{
+					msg1("error deleted, please try again");
+			   }
+            }else{
+                msg1(error);
+            }
+
+        });   
+    })	
+	$("#confirm-delete-dtl").click(function(){
+    	loader("s");
+    	$mid = $(".edit-magz-button").attr("magz-id");
+        $.get(base_url("ajax/dele/magz/"+$mid+"/dtl"),function(data,status,error){ 
+           if(status=="success"){
+			   if(data=="x"){
+				   msg1("data not found");
+			   }else if(data=="1"){
+				   msg2("success deleted","","");
+	               //refresh(base_url("backend"),300)
+			   }else{
+					msg1("error deleted, please try again");
+			   }
+            }else{
+                msg1(error);
+            }
+
+        });   
+    })	
+
+    //view
+    $("#i-small").click(function(){
+		$(this).addClass("active");
+		$("#i-large").removeClass("active");
+    	$("#boximageall").stop(true,false).find(".cover-tengah").removeClass("boximage2",1000).addClass("boximage",1500);
+    	$("#boximageall").find(".column").removeClass("col-7").addClass("col-12");
+    	$("#boximageall").find(".col-5").hide();
+    })
+    $("#i-large").click(function(){
+		$(this).addClass("active");
+		$("#i-small").removeClass("active");
+    	$("#boximageall").find(".cover-tengah").removeClass("boximage").addClass("boximage2",500);
+    	$("#boximageall").find(".column").removeClass("col-12").addClass("col-7");
+    	$("#boximageall").find(".col-5").show();
+    })
+    $(".issue-magz li").click(function(){
+    	//loader("s");
+    	$id = $(this).attr("id");
+        $.get(base_url("xhr/setting/view-issue/"+$id),function(data,status,error){ 
+           if(status=="success"){ 					
+	        	loader("hide");
+            }else{    			
+	        	loader("hide");
+                msg1(error);
+            }
+        });
+    })
+    // cover issue
+    /*$('#cvr-issue').on('show.bs.modal', function (event) {    	
+        var btn   = $(event.relatedTarget); // Button that triggered the modal
+        var magz  = btn.attr('magz-id'); // Extract info from data-* attributes
+        var modal = $(this);        
+        var cont  = JSON.parse(issue_cover(magz));        
+        var xpath = cont.result[0]["cover"];
+        for($x=1;$x<=cont.result.length;$x++){
+
+        }
+    })*/
+    $(".issue-cover").click(function(){
+    	$(".issue-cover").removeClass("i-aktif");
+    	$(this).addClass("i-aktif");
+    	$id  = $(this).attr("data-id");
+    	$txt = $(this).find(".i-txt").html();
+    	$(".issue-use").val("change cover from issue : "+$txt);
+    	$("#change-cover").attr("data-id",$id);
+    })
+	
+	$(".btn-process").click(function(){
+		$id = $(this).attr("id");
+		$.getJSON(base_url("ajax/post/"+$id),function(data,status){
+			if(status=="success"){
+				if(data["result"]==0){
+					$("#pdf_submit").hide();
+					$(".data_pdf").submit();
+				}else{
+					msg1("success");
+				}
+			}else{
+				msg1("error ajax");
+			}
+		});	
+	})
+})
+function progress_convert($value,$num){	
+	var refreshId = setInterval(function() {
+	    $.getJSON(base_url("xhr/convert_progress/"+$value+"/"+$num),function(data,status,error){ 
+	       if(status=="success"){
+	       	//msg1(data);
+					if(data[0]!=100){
+						$(".progress2 .progress-bar").css("width",data[0]+"%");
+					}else{						
+    					clearInterval(refreshId);
+						$(".progress2 .progress-bar").css("width","100%");	
+				        $(".emagz-tittle-button .btn").hide();
+				        msg1("Conversion completed\n click 'Now Publish Your Magazine'");
+        				$(".st-4").show();
+						//$("#edit-magz .st-5").attr("href",base_url(data[1]));
+			        	//$("#edit-magz .st-5,.st-6").show();					
+						setTimeout(
+							function() {	
+			        			$(".progress2").fadeOut();
+							},
+						1000);
+					}
+	        }else{
+	            msg1(error);
+	        }
+	    });  
+	}, 2000);
+}
+function blink(vclass){
+	$("."+vclass).show()
+	setInterval(function() {
+	    $("."+vclass).fadeIn(300).fadeOut(500);
+	}, 1000);
+}

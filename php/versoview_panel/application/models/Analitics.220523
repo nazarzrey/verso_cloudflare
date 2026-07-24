@@ -1,0 +1,11 @@
+<?php
+class Analitics extends CI_Model {  
+  function click($arr) {
+    $this->db->insert("history",
+			$arr
+		);
+		return $arr;
+  }
+}
+?>
+
